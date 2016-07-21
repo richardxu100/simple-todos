@@ -14,7 +14,8 @@ export default class TaskContainer extends Component {
 	}
 
 	togglePrivate = () => {
-		Meteor.call('setPrivate', this.props.task._id, !this.props.task.private);
+		// console.log('toggle Private works!');
+		Meteor.call('tasks.setPrivate', this.props.task._id, !this.props.task.private);
 	}
 
 	render() {
@@ -23,6 +24,7 @@ export default class TaskContainer extends Component {
 				task={this.props.task}
 				deleteThisTask={this.deleteThisTask}
 				toggleChecked={this.toggleChecked}
+				togglePrivate={this.togglePrivate}
 				showPrivateButton={this.props.showPrivateButton}
 			/>
 		)

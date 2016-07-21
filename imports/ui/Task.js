@@ -12,7 +12,7 @@ const Task = (props) => {
 	});
 
 	return (
-		<li className={taskClassName}>
+		<li className={taskClassName}> {/* allows one item to have multiple class attributes with one class name */}
 
 			<button 
 				className="delete" 
@@ -28,8 +28,8 @@ const Task = (props) => {
 			/>
 
 			{ props.showPrivateButton ? (
-				<button className="toggle-private" onClick="props.togglePrivate()">
-					{ props.task.isPrivate ? 'Private' : 'Public' }
+				<button className="toggle-private" onClick={props.togglePrivate}>
+					{ props.task.private ? 'Private' : 'Public' }
 				</button> 
 			) : '' }
 
