@@ -31,7 +31,7 @@ class AppContainer extends Component {
     });
   }
 
-  renderTasks() {
+  renderTasks = () => {
     let filteredTasks = this.props.tasks;
     if (this.state.hideCompleted) {
       filteredTasks = filteredTasks.filter(task => !task.checked); // will only return the values when task.checked is falsey, including false and undefined (items never clicked on)!
@@ -39,7 +39,6 @@ class AppContainer extends Component {
     return filteredTasks.map((task) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
       const showPrivateButton = task.owner === currentUserId;
-      console.log(this.props.currentUser);
       return (
         <TaskContainer 
           key={task._id} 

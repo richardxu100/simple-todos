@@ -12,7 +12,6 @@ export default class AppWrapper extends Component {
       <div className="container">
         <header>
           <h1>Todo List ({this.props.incompleteCount})</h1> {/* This is a comment */}
-          
           <label className="hide-completed">
             <input
               type="checkbox"
@@ -22,9 +21,7 @@ export default class AppWrapper extends Component {
             />
             Hide Completed Tasks
           </label>
-
           <AccountsUIWrapper />
-
           { this.props.currentUser ? // currentUser is Meteor.user(), which checks if someone is logged in
             <form 
               className="new-task" 
@@ -36,11 +33,17 @@ export default class AppWrapper extends Component {
              : '' 
           }
         </header>
-
         <ul>
-          {this.props.renderTasks}
+          {this.props.renderTasks()}
         </ul>
       </div>
     );
   }
+}
+
+AppWrapper.PropTypes = {
+  hideCompleted: PropTypes.bool.isRequired,
+  toggleHideCompleted: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  renderTasks: PropTypes.func.isRequired
 }
